@@ -7,14 +7,50 @@
     <title>BellaVista Restaurant | Fine Dining & Authentic Flavors</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-    --primary: #d4af37;
-    --secondary: #0d6efd;
-    --dark: #111;
-    --light: #f8f9fa;
+    --primary: #8B1E1E;   /* deep wine red */
+    --secondary: #D4AF37; /* gold */
+    --dark: #121212;      /* rich black */
+    --light: #FDF8F3;     /* warm cream */
+    --text: #2c2c2c;
 }
-        body { scroll-behavior: smooth; }
+        body { 
+            scroll-behavior: smooth;
+            background: var(--light);
+    color: var(--text);
+        }
+        h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+}
+.navbar {
+    background: rgba(18,18,18,0.9) !important;
+    backdrop-filter: blur(10px);
+}
+
+.navbar-brand {
+    color: var(--secondary) !important;
+    letter-spacing: 1px;
+}
+
+.nav-link {
+    color: #fff !important;
+}
+.nav-link.active {
+    color: var(--secondary) !important;
+}
+
+p, a, button {
+    font-family: 'Poppins', sans-serif;
+}
+.btn-warning {
+    border-radius: 30px;
+    padding: 10px 25px;
+}
+.btn-warning:hover {
+    box-shadow: 0 0 15px rgba(212,175,55,0.5);
+}
 
         /* Full Cover Carousel */
         .carousel-item { height: 100vh; position: relative; }
@@ -62,6 +98,7 @@
         .navbar-toggler-icon::before { top: -8px; }
         .navbar-toggler-icon::after { bottom: -8px; }
 
+
         /* Fade-in */
         .fade-in { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -96,7 +133,40 @@
         }
         @keyframes bubble { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
 
-        footer { background: #1a1a1a; }
+        footer {
+    background: #0d0d0d;
+    color: #aaa;
+}
+
+footer h5 {
+    color: var(--secondary);
+}
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.5px;
+}
+
+p, a, button {
+    font-family: 'Poppins', sans-serif;
+}
+.section-title {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    color: var(--secondary);
+}
+
+.section-subtitle {
+    color: #777;
+}
+
+footer a {
+    color: #ccc;
+}
+
+footer a:hover {
+    color: var(--secondary);
+}
 
         /* Glass Popup */
 #successPopup {
@@ -207,6 +277,26 @@ h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
 h2 { font-size: clamp(1.6rem, 4vw, 2.5rem); }
 h5 { font-size: clamp(1rem, 2.5vw, 1.3rem); }
 p  { font-size: clamp(0.9rem, 2vw, 1.1rem); }
+
+h1, h2, h3, h4 {
+    color: var(--primary);
+}
+.btn-warning {
+    background: var(--secondary);
+    color: #000;
+    border: none;
+    font-weight: 500;
+}
+
+.btn-warning:hover {
+    background: #b8962e;
+    color: #000;
+}
+.card {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #eee;
+}
 
 /* Better spacing scaling */
 section {
@@ -332,26 +422,6 @@ section {
     }
 }
 
-@media (max-width: 768px) {
-    .carousel-item {
-        height: 75vh;
-    }
-
-    .carousel-item img {
-        height: 75vh;
-    }
-
-    .hero-text h1 {
-        font-size: 1.8rem;
-    }
-
-    .hero-text p {
-        font-size: 0.9rem;
-    }
-}
-.carousel-item {
-    min-height: 60vh;
-}
 @media (max-width: 768px) {
     footer .row > div {
         text-align: center;
@@ -547,12 +617,16 @@ section {
 }
 .hero-text p {
     opacity: 0.9;
+    color: white;
 }
 .btn-warning {
     background: var(--primary);
     border: none;
-    color: #111;
-    font-weight: 600;
+    color: white;
+}
+
+.btn-warning:hover {
+    background: #8b1a1a;
 }
 
 .trust-item {
@@ -599,6 +673,88 @@ section {
         transform: translateX(-50%);
     }
 }
+.review-box {
+    max-width: 500px;
+}
+.bg-light {
+    background: var(--light) !important;
+}
+.card {
+    border: none;
+    border-radius: 12px;
+}
+
+.menu-card {
+    background: white;
+    border: 1px solid #f1e4d3;
+}
+
+.menu-card h5 {
+    color: var(--primary);
+}
+h1, h2, h3, h4 {
+    color: var(--primary);
+}
+.review-box {
+    background: #fff;
+    border-left: 5px solid var(--secondary);
+}
+section {
+    padding: 70px 0;
+}
+
+.section-title {
+    color: var(--primary);
+}
+
+p {
+    color: #444;
+}
+#home {
+    min-height: 100vh;
+    height: auto;
+    padding: 100px 20px;
+}
+@media (max-width: 768px) {
+    #home {
+        min-height: 75vh;
+        padding: 80px 15px;
+    }
+}
+.hero-text h1 {
+    color: #fff;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+
+.hero-text p {
+    color: #f1f1f1;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+#home .btn-warning {
+    background: var(--secondary);
+    color: #000;
+    font-weight: 600;
+}
+
+#home .btn-warning:hover {
+    background: #c19b2e;
+}
+#home {
+    position: relative;
+    background: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/3c/fd/3d/roadchef-order-counter.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#home .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+}
+
+
 
 
     </style>
@@ -625,41 +781,19 @@ section {
         </div>
     </nav>
 
-    <!-- HERO CAROUSEL -->
-    <div id="home" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="https://blackrestaurantweeks.com/wp-content/uploads/2021/10/taste-of-nigera-photo-1.jpeg" loading="lazy" alt="Restaurant">
-                <div class="hero-text">
-                    <h1 class="display-3 fw-bold">BellaVista Restaurant</h1>
-                    <p class="lead">Where Every Meal Tells a Story</p>
-                    <a href="#collections" class="btn btn-warning btn-lg">
-    View Menu & Reserve on WhatsApp
-</a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="https://media.istockphoto.com/id/1829241109/photo/enjoying-a-brunch-together.jpg?s=612x612&w=0&k=20&c=9awLLRMBLeiYsrXrkgzkoscVU_3RoVwl_HA-OT-srjQ=" loading="lazy" alt="Restaurant">
-                <div class="hero-text">
-                    <h1 class="display-3 fw-bold">Authentic Flavors • Warm Ambiance</h1>
-                    <p class="lead mb-3">Fine dining with passion and excellence</p>
-                    <a href="https://wa.me/2347089743895?text=Hello%2C%20I%27d%20like%20to%20make%20a%20reservation%20at%20BellaVista.%20My%20name%20is..." class="btn btn-warning btn-lg">
-    Book Now on WhatsApp
-</a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="https://africanrestaurantweek.com/wp-content/uploads/2020/08/bulk_actions_image_771e338a-2cbe-4c75-ae47-7b9287555f2c-w2880-57-1000x800.jpg.webp" loading="lazy" alt="Restaurant">
-                <div class="hero-text">
-                    <h1 class="display-3 fw-bold">Fresh Ingredients • Perfect Moments</h1>
-                    <p class="lead mb-3">Experience dining at its finest</p>
-                    <a href="https://wa.me/2347089743895?text=Hello%2C%20I%27m%20interested%20in%20your%20restaurant%20services.%20My%20name%20is..." class="btn btn-warning btn-lg">
-    Book Now on WhatsApp
-</a>
-                </div>
-            </div>
-        </div>
+    <!-- HERO section -->
+    <section id="home">
+    <div class="overlay"></div>
+
+    <div class="hero-text text-center">
+        <h1 class="display-3 fw-bold">BellaVista</h1>
+        <p class="lead">Fine Dining Experience</p>
+
+        <a href="#collections" class="btn btn-warning btn-lg mt-3">
+            View Menu
+        </a>
     </div>
+</section>
 
     <div class="scrolling-text">
     <div class="scroll-track">
@@ -693,10 +827,177 @@ section {
         </div>
     </section>
 
+
+    <!-- Menu Highlights -->
+    <section id="collections" class="py-5 fade-in">
+    <div class="container">
+
+        <h2 class="text-center display-5 fw-bold section-title">Our Menu Highlights</h2>
+        <p class="text-center section-subtitle">Discover our range of delicious dishes</p>
+
+        <div class="row g-4">
+
+            <!-- Suya -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card service-card h-100 shadow-sm">
+                    <img src="https://i.ytimg.com/vi/_et2o-65MkU/hq720.jpg" class="card-img-top" alt="Suya">
+                    <div class="card-body text-center">
+                        <h5>Suya</h5>
+                        <p class="text-muted">₦2,500 per portion</p>
+
+                        <div class="d-flex justify-content-center gap-2 mb-2">
+                            <button onclick="updateQty('suya', -1)" class="btn btn-sm btn-dark">-</button>
+                            <span id="qty-suya">0</span>
+                            <button onclick="updateQty('suya', 1)" class="btn btn-sm btn-dark">+</button>
+                        </div>
+
+                        <button onclick="addToCart('Suya', 2500, 'suya')" class="btn btn-warning btn-sm">
+                            Add to Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jollof Rice -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card service-card h-100 shadow-sm">
+                    <img src="https://i.ytimg.com/vi/h6w8_H55WSs/maxresdefault.jpg" class="card-img-top" alt="Jollof Rice">
+                    <div class="card-body text-center">
+                        <h5>Jollof Rice</h5>
+                        <p class="text-muted">₦2,500 per portion</p>
+
+                        <div class="d-flex justify-content-center gap-2 mb-2">
+                            <button onclick="updateQty('jollof', -1)" class="btn btn-sm btn-dark">-</button>
+                            <span id="qty-jollof">0</span>
+                            <button onclick="updateQty('jollof', 1)" class="btn btn-sm btn-dark">+</button>
+                        </div>
+
+                        <button onclick="addToCart('Jollof Rice', 2500, 'jollof')" class="btn btn-warning btn-sm">
+                            Add to Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grilled Fish -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card service-card h-100 shadow-sm">
+                    <img src="https://i.ytimg.com/vi/_et2o-65MkU/hq720.jpg" class="card-img-top" alt="Grilled Fish">
+                    <div class="card-body text-center">
+                        <h5>Grilled Fish</h5>
+                        <p class="text-muted">₦2,500 per portion</p>
+
+                        <div class="d-flex justify-content-center gap-2 mb-2">
+                            <button onclick="updateQty('grilled-fish', -1)" class="btn btn-sm btn-dark">-</button>
+                            <span id="qty-grilled-fish">0</span>
+                            <button onclick="updateQty('grilled-fish', 1)" class="btn btn-sm btn-dark">+</button>
+                        </div>
+
+                        <button onclick="addToCart('Grilled Fish', 2500, 'grilled-fish')" class="btn btn-warning btn-sm">
+                            Add to Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Snacks -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card service-card h-100 shadow-sm">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiT1GA8iHhzRJXbPCs9akEXx9_AomAyEolkOmLfmEgJORl2DNRyqgEPeFMyEx_djUBSfA0MYjvygfbItTvYZo7XKxBj0_BjdECHZZ4-a8OQZ6WQcIkh_jTvbG_Qg51EsLSTybksH6EVhyphenhyphenZe/s5456/DSC07861.JPG" class="card-img-top" alt="Snacks">
+                    <div class="card-body text-center">
+                        <h5>Snacks</h5>
+                        <p class="text-muted">₦2,500 per portion</p>
+
+                        <div class="d-flex justify-content-center gap-2 mb-2">
+                            <button onclick="updateQty('snacks', -1)" class="btn btn-sm btn-dark">-</button>
+                            <span id="qty-snacks">0</span>
+                            <button onclick="updateQty('snacks', 1)" class="btn btn-sm btn-dark">+</button>
+                        </div>
+
+                        <button onclick="addToCart('Snacks', 2500, 'snacks')" class="btn btn-warning btn-sm">
+                            Add to Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Salad -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card service-card h-100 shadow-sm">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrzsAnKSphTeAM82RedknTbFuzc0OoDoR2LA&s" class="card-img-top" alt="Salad">
+                    <div class="card-body text-center">
+                        <h5>Fresh Garden Salad</h5>
+                        <p class="text-muted">₦2,500 per portion</p>
+
+                        <div class="d-flex justify-content-center gap-2 mb-2">
+                            <button onclick="updateQty('salad', -1)" class="btn btn-sm btn-dark">-</button>
+                            <span id="qty-salad">0</span>
+                            <button onclick="updateQty('salad', 1)" class="btn btn-sm btn-dark">+</button>
+                        </div>
+
+                        <button onclick="addToCart('Fresh Garden Salad', 2500, 'salad')" class="btn btn-warning btn-sm">
+                            Add to Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ice Cream -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card service-card h-100 shadow-sm">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Ice_cream_with_whipped_cream%2C_chocolate_syrup%2C_and_a_wafer_%28cropped%29.jpg" class="card-img-top" alt="Ice Cream">
+                    <div class="card-body text-center">
+                        <h5>Ice Cream</h5>
+                        <p class="text-muted">₦2,500 per portion</p>
+
+                        <div class="d-flex justify-content-center gap-2 mb-2">
+                            <button onclick="updateQty('ice-cream', -1)" class="btn btn-sm btn-dark">-</button>
+                            <span id="qty-ice-cream">0</span>
+                            <button onclick="updateQty('ice-cream', 1)" class="btn btn-sm btn-dark">+</button>
+                        </div>
+
+                        <button onclick="addToCart('Ice Cream', 2500, 'ice-cream')" class="btn btn-warning btn-sm">
+                            Add to Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <div class="container mt-5">
+    <h4 class="text-center">Your Order</h4>
+
+    <ul id="orderList" class="list-group mb-3"></ul>
+
+    <h5 class="text-center">Total: ₦<span id="totalPrice">0</span></h5>
+    <div class="text-center mt-3">
+    <button onclick="clearCart()" class="btn btn-outline-danger">
+        Clear Cart
+    </button>
+</div>
+
+    <div class="text-center mt-3">
+        <button onclick="sendOrder()" class="btn btn-dark btn-lg">
+            Order on WhatsApp
+        </button>
+    </div>
+</div>
+
+<div class="text-center mt-4">
+    <h6>Add Drinks</h6>
+
+    <button onclick="quickAdd('Coke', 500)" class="btn btn-outline-dark btn-sm">Coke</button>
+    <button onclick="quickAdd('Fanta', 500)" class="btn btn-outline-dark btn-sm">Fanta</button>
+    <button onclick="quickAdd('Water', 300)" class="btn btn-outline-dark btn-sm">Water</button>
+</div>
+
     <!-- Services / Experience -->
     <section id="services" class="py-5 fade-in">
         <div class="container">
-            <h2 class="text-center display-5 fw-bold mb-5">Our Experience</h2>
+            <h2 class="text-center display-5 fw-bold mb-5">Our Services</h2>
             <div class="row g-4">
                 <div class="col-md-4">
                     <div class="card service-card h-100 shadow-sm text-center">
@@ -756,81 +1057,57 @@ section {
         </div>
     </section>
 
-    <!-- Menu Highlights -->
-    <section id="collections" class="py-5 fade-in">
-        <div class="container">
-            <h2 class="text-center display-5 fw-bold section-title">Our Menu Highlights</h2>
-            <p class="text-center section-subtitle">Discover our range of delicious dishes</p>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card service-card h-100 shadow-sm">
-                        <img src="https://i.ytimg.com/vi/_et2o-65MkU/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDTewTZElCkHhQh6oVgdG-4xdPD_w" loading="lazy" class="card-img-top" alt="Grilled Fish">
-                        <div class="card-body text-center">
-                            <h5>Suya</h5>
-                            <p class="text-muted">Spicy grilled meat skewers</p>
-                            <a href="https://wa.me/2347089743895?text=Hello,%20I%20want%20to%20order%20some%20suya"
-class="btn btn-warning btn-sm">Order Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card service-card h-100 shadow-sm">
-                        <img src="https://i.ytimg.com/vi/h6w8_H55WSs/maxresdefault.jpg" loading="lazy" class="card-img-top" alt="Jollof Rice">
-                        <div class="card-body text-center">
-                            <h5>Classic Nigerian Jollof Rice</h5>
-                            <p class="text-muted">Smoky, spicy & perfectly cooked</p>
-                            <a href="https://wa.me/2347089743895?text=Hello,%20I%20want%20to%20order%20some%20jollof%20rice"
-class="btn btn-warning btn-sm">Order Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card service-card h-100 shadow-sm">
-                        <img src="https://cdn.guardian.ng/wp-content/uploads/2017/09/Nigerian-Catfish-peppersoup-warri-version.jpg" loading="lazy" class="card-img-top" alt="Steak">
-                        <div class="card-body text-center">
-                            <h5>Grilled Fish Pepper Soup</h5>
-                            <p class="text-muted">Fresh catch in spicy pepper broth</p>
-                            <a href="https://wa.me/2347089743895?text=Hello,%20I%20want%20to%20order%20a%20grilled%20sirloin%20steak"
-class="btn btn-warning btn-sm">Order Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card service-card h-100 shadow-sm">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiT1GA8iHhzRJXbPCs9akEXx9_AomAyEolkOmLfmEgJORl2DNRyqgEPeFMyEx_djUBSfA0MYjvygfbItTvYZo7XKxBj0_BjdECHZZ4-a8OQZ6WQcIkh_jTvbG_Qg51EsLSTybksH6EVhyphenhyphenZe/s5456/DSC07861.JPG" loading="lazy" class="card-img-top" alt="Pasta">
-                        <div class="card-body text-center">
-                            <h5>Snacks</h5>
-                            <p class="text-muted">We offer a variety of delicious snacks</p>
-                            <a href="https://wa.me/2347089743895?text=Hello,%20I%20want%20to%20order%20some%20creamy%20seafood%20pasta"
-class="btn btn-warning btn-sm">Order Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card service-card h-100 shadow-sm">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrzsAnKSphTeAM82RedknTbFuzc0OoDoR2LA&s" loading="lazy" class="card-img-top" alt="Salad">
-                        <div class="card-body text-center">
-                            <h5>Fresh Garden Salad</h5>
-                            <p class="text-muted">Crisp vegetables with house dressing</p>
-                            <a href="https://wa.me/2347089743895?text=Hello,%20I%20want%20to%20order%20a%20garden%20salad"
-class="btn btn-warning btn-sm">Order Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card service-card h-100 shadow-sm">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Ice_cream_with_whipped_cream%2C_chocolate_syrup%2C_and_a_wafer_%28cropped%29.jpg" loading="lazy" class="card-img-top" alt="Dessert">
-                        <div class="card-body text-center">
-                            <h5>Ice Cream</h5>
-                            <p class="text-muted">Warm chocolate cake with vanilla ice cream</p>
-                            <a href="https://wa.me/2347089743895?text=Hello,%20I%20want%20to%20order%20some%20ice%20cream"
-class="btn btn-warning btn-sm">Order Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+    <!-- REVIEWS -->
+<section id="reviews" class="py-5 bg-light fade-in">
+    <div class="container text-center">
+
+        <h2 class="text-center display-5 fw-bold section-title">
+            What Our Customers Say
+        </h2>
+
+        <p class="text-muted mb-3">
+            Loved by food lovers across the city
+        </p>
+
+        <!-- Google rating -->
+        <div class="mb-3">
+            <i class="fab fa-google text-danger"></i>
+            <span class="fw-bold">4.8/5 Google Reviews</span>
         </div>
-    </section>
+
+        <div class="review-box mx-auto p-4 shadow rounded">
+
+            <div class="mb-3">
+                <img id="review-img" src="https://i.pravatar.cc/80?img=1"
+                     style="width:60px; height:60px; border-radius:50%; object-fit:cover;">
+            </div>
+
+            <p class="review-text">
+                “The food was absolutely delicious! The jollof rice and chicken were perfect.”
+            </p>
+
+            <!-- ⭐⭐⭐⭐⭐ -->
+            <div class="text-warning mb-2">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+
+            <h6 class="fw-bold mb-0">— Michael A.</h6>
+
+        </div>
+
+        <!-- BUTTON -->
+        <a href="https://g.page/r/YOUR-GOOGLE-LINK/review" target="_blank"
+           class="btn btn-warning mt-4">
+            Leave a Review on Google
+        </a>
+
+    </div>
+</section>
 
     <!-- Why Choose Us -->
     <section id="whyus" class="py-5 bg-light fade-in">
@@ -874,42 +1151,6 @@ Book on WhatsApp
             </div>
         </div>
     </section>
-
-    <!-- REVIEWS -->
-<section id="reviews" class="py-5 bg-light fade-in">
-    <div class="container text-center">
-        <h2 class="text-center display-5 fw-bold section-title">
-            What Our Clients Say
-        </h2>
-
-        <p class="text-muted mb-3">
-            Trusted by 100+ happy customers who love our food and service
-        </p>
-
-        <div class="review-box mx-auto p-4 shadow rounded">
-            <div class="mb-3">
-                <img id="review-img" src="https://i.pravatar.cc/80?img=1" 
-                     style="width:60px; height:60px; border-radius:50%; object-fit:cover;">
-            </div>
-
-            <p class="review-text">
-                “Absolutely amazing service and great food!”
-            </p>
-
-            <!-- ⭐⭐⭐⭐⭐ -->
-            <div class="text-warning mb-2">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-            </div>
-
-            <h6 class="fw-bold mb-0">— Emily Carter</h6>
-
-        </div>
-    </div>
-</section>
 
     <!-- Lightbox -->
     <div id="lightbox">
@@ -1199,29 +1440,24 @@ window.addEventListener('scroll', () => {
 
 const reviews = [
     {
-        text: "Amazing experience! My taste buds are still dancing.",
-        name: "— Sarah Johnson",
+        text: "The jollof rice here is top tier! I loved every bite.",
+        name: "— David O.",
         img: "https://i.pravatar.cc/80?img=1"
     },
     {
-        text: "Best restaurant I've ever been to. Highly recommend!",
-        name: "— Michael Lee",
+        text: "Best restaurant experience I've had in a long time.",
+        name: "— Chioma E.",
         img: "https://i.pravatar.cc/80?img=2"
     },
     {
-        text: "Great service and beautiful location. Will come again!",
-        name: "— Ada Obi",
+        text: "Fast service, clean environment, and amazing food.",
+        name: "— Musa A.",
         img: "https://i.pravatar.cc/80?img=3"
     },
     {
-        text: "Professional staff and relaxing atmosphere. Loved it!",
-        name: "— David Smith",
+        text: "Their fried rice and chicken is unbeatable!",
+        name: "— Grace K.",
         img: "https://i.pravatar.cc/80?img=4"
-    },
-    {
-        text: "Exceptional results and outstanding customer service!",
-        name: "— Chioma Eze",
-        img: "https://i.pravatar.cc/80?img=5"
     }
 ];
 
@@ -1237,6 +1473,128 @@ setInterval(() => {
 }, 4000);
 </script>
 
+<script>
+
+let cart = {};
+let quantities = {};
+
+/* UPDATE QUANTITY */
+function updateQty(id, change) {
+    if (!quantities[id]) quantities[id] = 0;
+
+    quantities[id] += change;
+
+    if (quantities[id] < 0) quantities[id] = 0;
+
+    document.getElementById(`qty-${id}`).innerText = quantities[id];
+}
+
+/* ADD TO CART */
+function addToCart(name, price, id) {
+    const qty = quantities[id] || 0;
+
+    if (qty === 0) {
+        alert("Please select quantity first");
+        return;
+    }
+
+    cart[id] = {
+        name: name,
+        price: price,
+        qty: qty
+    };
+
+    renderCart();
+}
+
+/* RENDER CART */
+function renderCart() {
+    const list = document.getElementById("orderList");
+    list.innerHTML = "";
+
+    let total = 0;
+
+    Object.entries(cart).forEach(([id, item]) => {
+        const itemTotal = item.qty * item.price;
+        total += itemTotal;
+
+        list.innerHTML += `
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    ${item.name} x${item.qty}
+                </div>
+
+                <div>
+                    ₦${itemTotal}
+                    <button onclick="removeItem('${id}')" 
+                        class="btn btn-sm btn-danger ms-2">
+                        ✕
+                    </button>
+                </div>
+            </li>
+        `;
+    });
+
+    document.getElementById("totalPrice").innerText = total;
+}
+
+/* SEND TO WHATSAPP */
+function sendOrder() {
+    if (Object.keys(cart).length === 0) {
+        alert("No items selected");
+        return;
+    }
+
+    let message = "Hello, I want to order:%0A";
+
+    let total = 0;
+
+    Object.values(cart).forEach((item, index) => {
+        const itemTotal = item.qty * item.price;
+        total += itemTotal;
+
+        message += `${index + 1}. ${item.name} x${item.qty} - ₦${itemTotal}%0A`;
+    });
+
+    message += `%0ATotal: ₦${total}%0A`;
+    message += "I'd also like to add drinks.";
+
+    window.open(`https://wa.me/2347089743895?text=${message}`, "_blank");
+}
+
+function quickAdd(name, price) {
+    const id = name.toLowerCase();
+
+    if (!cart[id]) {
+        cart[id] = { name, price, qty: 1 };
+    } else {
+        cart[id].qty += 1;
+    }
+
+    renderCart();
+}
+function removeItem(id) {
+    delete cart[id];
+
+    // Reset quantity display
+    quantities[id] = 0;
+    document.getElementById(`qty-${id}`).innerText = 0;
+
+    renderCart();
+}
+function clearCart() {
+    cart = {};
+    quantities = {};
+
+    // Reset all quantity displays
+    document.querySelectorAll('[id^="qty-"]').forEach(el => {
+        el.innerText = 0;
+    });
+
+    renderCart();
+}
+</script>
+
 <!-- Success Popup -->
 <div id="successPopup">
     <div class="popup-box">
@@ -1247,9 +1605,7 @@ setInterval(() => {
     </div>
     
     
-    <button id="scrollTopBtn">
-    ↑
-</button>
+    
 
 </body>
 </html>
