@@ -183,31 +183,6 @@ footer a:hover {
     z-index: 3000; /* higher than lightbox */
 }
 
-.popup-box {
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(15px);
-    border-radius: 15px;
-    padding: 30px;
-    text-align: center;
-    color: #fff;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-    animation: popUp 0.4s ease;
-}
-
-.popup-box i {
-    font-size: 50px;
-    color: #00ffae;
-    margin-bottom: 15px;
-}
-
-.popup-box button {
-    margin-top: 15px;
-    border: none;
-    padding: 10px 30px;
-    border-radius: 30px;
-    background: #d4af37;
-    font-weight: bold;
-}
 
 @keyframes popUp {
     from { transform: scale(0.7); opacity: 0; }
@@ -386,14 +361,23 @@ section {
 
 /* POPUP BOX */
 .popup-box {
-    background: rgba(255,255,255,0.1);
+    background: #ffffff; /* solid white */
     border-radius: 15px;
     padding: 30px 40px;
     text-align: center;
-    color: white;
-    backdrop-filter: blur(15px);
-    transform: scale(0.8);
-    transition: all 0.3s ease;
+    color: #222; /* DARK TEXT */
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+/* icon color */
+.popup-box i {
+    color: #28a745;
+}
+
+/* button */
+.popup-box button {
+    background: var(--secondary);
+    color: #000;
 }
 
 /* ANIMATION */
@@ -753,13 +737,20 @@ p {
     height: 100%;
     background: rgba(0,0,0,0.4);
 }
-
+#extraRequest {
+    border-radius: 25px;
+    padding: 10px 15px;
+}
 
 
 
     </style>
 </head>
 <body>
+
+    <audio id="orderSound" preload="auto">
+    <source src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3" type="audio/mpeg">
+</audio>
 
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -978,6 +969,10 @@ p {
         Clear Cart
     </button>
 </div>
+<div class="mt-3">
+    <input type="text" id="customerName" class="form-control mb-2" placeholder="Your Name">
+    <input type="text" id="customerLocation" class="form-control mb-2" placeholder="Delivery Location">
+</div>
 
     <div class="text-center mt-3">
         <button onclick="sendOrder()" class="btn btn-dark btn-lg">
@@ -986,13 +981,18 @@ p {
     </div>
 </div>
 
-<div class="text-center mt-4">
-    <h6>Add Drinks</h6>
-
-    <button onclick="quickAdd('Coke', 500)" class="btn btn-outline-dark btn-sm">Coke</button>
-    <button onclick="quickAdd('Fanta', 500)" class="btn btn-outline-dark btn-sm">Fanta</button>
-    <button onclick="quickAdd('Water', 300)" class="btn btn-outline-dark btn-sm">Water</button>
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <input type="text" 
+                   id="extraRequest" 
+                   class="form-control text-center"
+                   placeholder="Any drinks or extra request? (e.g. Coke, Water)">
+        </div>
+    </div>
 </div>
+
+
 
     <!-- Services / Experience -->
     <section id="services" class="py-5 fade-in">
@@ -1386,14 +1386,13 @@ form.addEventListener("submit", function(e) {
         headers: { 'Accept': 'application/json' }
     })
     .then(response => {
-        if (response.ok) {
-            document.getElementById("successPopup").style.display = "flex";
-            showPopup(); // ✅ THIS is where it goes
-            form.reset(); // reset fields
-        } else {
-            alert("Something went wrong. Please try again.");
-        }
-    })
+    if (response.ok) {
+        showPopup("Message Sent!", "We’ll get back to you shortly.");
+        form.reset();
+    } else {
+        alert("Something went wrong. Please try again.");
+    }
+})
     .catch(() => {
         alert("Network error. Check your internet.");
     });
@@ -1416,13 +1415,17 @@ document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
     });
 });
 
-function showPopup() {
+function showPopup(title = "Success!", message = "Action completed successfully") {
     const popup = document.getElementById('successPopup');
+
+    popup.querySelector("h4").innerText = title;
+    popup.querySelector("p").innerText = message;
+
     popup.classList.add('show');
 
     setTimeout(() => {
         popup.classList.remove('show');
-    }, 1000);
+    }, 1500);
 }
 /* =========================
    NAVBAR SCROLL EFFECT
@@ -1494,7 +1497,7 @@ function addToCart(name, price, id) {
     const qty = quantities[id] || 0;
 
     if (qty === 0) {
-        alert("Please select quantity first");
+        showPopup("Oops!", "Please select quantity first");
         return;
     }
 
@@ -1505,7 +1508,26 @@ function addToCart(name, price, id) {
     };
 
     renderCart();
+
+    // ✅ ONLY play sound here
+    playSound();
 }
+
+window.onload = function () {
+    const savedCart = localStorage.getItem("cart");
+    const savedQty = localStorage.getItem("quantities");
+
+    if (savedCart) cart = JSON.parse(savedCart);
+    if (savedQty) quantities = JSON.parse(savedQty);
+
+    // Restore quantities visually
+    Object.keys(quantities).forEach(id => {
+        const el = document.getElementById(`qty-${id}`);
+        if (el) el.innerText = quantities[id];
+    });
+
+    renderCart();
+};
 
 /* RENDER CART */
 function renderCart() {
@@ -1536,16 +1558,38 @@ function renderCart() {
     });
 
     document.getElementById("totalPrice").innerText = total;
+
+localStorage.setItem("cart", JSON.stringify(cart));
+localStorage.setItem("quantities", JSON.stringify(quantities));
 }
+
 
 /* SEND TO WHATSAPP */
 function sendOrder() {
     if (Object.keys(cart).length === 0) {
-        alert("No items selected");
+        showPopup("Empty Cart", "Please add items first");
         return;
     }
 
-    let message = "Hello, I want to order:%0A";
+    const name = document.getElementById("customerName").value;
+    const location = document.getElementById("customerLocation").value;
+
+    if (!name || !location) {
+        showPopup("Missing Info", "Enter your name and location");
+        return;
+    }
+
+    // ✅ PLAY SOUND + VIBRATION HERE (USER CLICK)
+    playSound();
+    if (navigator.vibrate) {
+        navigator.vibrate(100);
+    }
+
+    document.getElementById("loadingSpinner").style.display = "flex";
+
+    let message = `Hello, my name is ${name}.%0A`;
+    message += `My location: ${location}%0A%0A`;
+    message += "I want to order:%0A";
 
     let total = 0;
 
@@ -1556,10 +1600,16 @@ function sendOrder() {
         message += `${index + 1}. ${item.name} x${item.qty} - ₦${itemTotal}%0A`;
     });
 
-    message += `%0ATotal: ₦${total}%0A`;
-    message += "I'd also like to add drinks.";
+    setTimeout(() => {
+        document.getElementById("loadingSpinner").style.display = "none";
 
-    window.open(`https://wa.me/2347089743895?text=${message}`, "_blank");
+        showPopup("Order Ready!", "Redirecting to WhatsApp...");
+
+        setTimeout(() => {
+            window.open(`https://wa.me/2347089743895?text=${message}`, "_blank");
+        }, 800);
+
+    }, 1200);
 }
 
 function quickAdd(name, price) {
@@ -1586,14 +1636,57 @@ function clearCart() {
     cart = {};
     quantities = {};
 
-    // Reset all quantity displays
+    localStorage.removeItem("cart");
+    localStorage.removeItem("quantities");
+
     document.querySelectorAll('[id^="qty-"]').forEach(el => {
         el.innerText = 0;
     });
 
     renderCart();
 }
+function playSound() {
+    const sound = document.getElementById("orderSound");
+
+    if (!sound) return;
+
+    sound.pause();
+    sound.currentTime = 0;
+
+    const playPromise = sound.play();
+
+    if (playPromise !== undefined) {
+        playPromise.catch(() => {
+            console.log("User interaction required for sound");
+        });
+    }
+}
+
 </script>
+
+<script>
+    document.body.addEventListener("click", () => {
+    const sound = document.getElementById("orderSound");
+    sound.play().then(() => {
+        sound.pause();
+        sound.currentTime = 0;
+    }).catch(() => {});
+}, { once: true });
+</script>
+
+<!-- Loading Spinner -->
+<div id="loadingSpinner" style="
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background: rgba(0,0,0,0.6);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:6000;
+">
+    <div class="spinner-border text-warning" style="width:3rem;height:3rem;"></div>
+</div>
 
 <!-- Success Popup -->
 <div id="successPopup">
